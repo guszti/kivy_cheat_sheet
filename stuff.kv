@@ -1,0 +1,127 @@
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import main main
+
+#override ListItemButton properties
+<ListItemButton>:
+  selected_color: 0, 0, 1, 1
+  deselected_color: 0, 0, 0, 1
+  font_size: 16
+
+<MyButton@Button>:
+  font_size: 16
+  background_color: 0, 1, 0, 1
+
+<Separator@Widget>:
+  id: separator
+  size_hint_y: None
+  height: 2
+  canvas:
+    Color:
+      rgb: 1., 0., 0.
+    Rectangle:
+      pos: 0, separator.center_y
+      size: separator.width, separator.height
+
+<Stuff>:
+  id: change
+  rows: 9
+  orientation: "vertical"
+
+  BoxLayout:
+    size_hint_y: 0.3
+
+    MyButton:
+      text: "button_1"
+      on_press: change.ids.la.text = self.text
+
+    MyButton:
+      text: "button_2"
+      on_press: root.ids.la.text = self.text
+
+    MyButton:
+      text: "button_3"
+      on_press: root.ids.la.text = self.text
+
+  Label:
+    id: la
+    font_size: 16
+    text: "Virgin label"
+    size_hint_y: 0.3
+
+  Separator:
+
+  Label:
+    font_size: 16
+    text: "Some snails"
+    size_hint_y: 0.3
+
+  ListView:
+    id: data_list
+    adapter:
+      # ListItemButton-hez main-ből veszi a cuccost
+      ListAdapter(data=root.d, cls=main.MyListButton)
+      # import ListItemButton in the kv file
+      # ListAdapter(data=root.d, cls=ListItemButton)
+
+  MyButton:
+    text: "Remove selected snail"
+    id: remove
+    size_hint_y: 0.3
+    on_press: root.remove_item()#root.d.remove(root.ids.data_list.adapter.selection[0].text)
+
+  BoxLayout:
+    Button:
+      id: a
+      font_size: 40
+      text: ""
+      on_press: root.change_bg(self)
+
+    Button:
+      id: b
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+    Button:
+      id: c
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+  BoxLayout:
+    Button:
+      id: d
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+    Button:
+      id: e
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+    Button:
+      id: f
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+  BoxLayout:
+    Button:
+      id: g
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+    Button:
+      id: h
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
+
+    Button:
+      id: i
+      font_size: 40
+      text: ""
+      on_press: change.change_bg(self)
